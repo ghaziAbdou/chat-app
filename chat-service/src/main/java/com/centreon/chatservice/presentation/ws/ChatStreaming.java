@@ -49,11 +49,17 @@ public class ChatStreaming
 	@PostConstruct
 	public void initialize()
 	{
-		this.messageService.stream().subscribe(message -> messagingTemplate
-			.convertAndSendToUser("" + message.getRecipientId(),
-				"/messages", message));
-		this.eventService.stream().subscribe(event -> messagingTemplate
-			.convertAndSendToUser("all", "/events", event));
+		this.messageService.stream().subscribe(message -> {
+			messagingTemplate
+				.convertAndSendToUser("" + message.getRecipientId(),
+					"/messages", message);
+			LOGGER.info("new message notification sent to {}/messages ",message.getRecipientId());
+		});
+		this.eventService.stream().subscribe(event -> {
+			messagingTemplate
+				.convertAndSendToUser("all", "/events", event);
+			LOGGER.info("event {} sent to all/events ", event);
+		});
 	}
 
 	//method called when user open page in browser

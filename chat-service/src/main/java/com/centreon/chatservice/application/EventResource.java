@@ -4,12 +4,14 @@ import java.time.OffsetDateTime;
 
 import com.centreon.chatservice.domain.event.Event;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Event resource class
  * @author ghazi
  */
 @Getter
+@ToString
 public class EventResource
 {
 	private final Long id;
