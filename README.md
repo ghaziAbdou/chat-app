@@ -1,5 +1,5 @@
 # chat-app
-##Introduction
+## Introduction
 This project is a demo of a chat application. It contains two modules:
 1. chat service (back-end) : Simple service which exposes a rest api as well as a websocket service. it provides : 
    * user management : signup, signin, logout.
